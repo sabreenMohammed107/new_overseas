@@ -23,17 +23,17 @@
       <span><i class="material-icons fs-16">build</i>Setup</span>
     </a>
     <ul id="create" class="collapse" aria-labelledby="tables" data-parent="#side-nav-accordion">
-      <li> <a href="_clients.html">Clients</a> </li>
-      <li> <a href="_supplier.html">Suppliers</a> </li>
-      <li> <a href="_ports.html">Ports</a> </li>
-      <li> <a href="_carriers.html">Carriers</a> </li>
-      <li> <a href="_agents.html" class="active">Agents</a> </li>
-      <li> <a href="_expenses.html">Expenses</a> </li>
-      <li> <a href="_containers.html">Containers </a> </li>
-      <li> <a href="_employees.html">Employees </a> </li>
-      <li> <a href="_bank_accounts.html">Bank Accounts</a> </li>
-      <li> <a href="_currencies.html">Currencies</a> </li>
-      <li> <a href="_countries.html">Countries</a> </li>
+      <li> <a href="{{ route('client.index') }}">Clients</a> </li>
+      <li> <a href="{{ route('supplier.index') }}">Suppliers</a> </li>
+      <li> <a href="{{ route('port.index') }}">Ports</a> </li>
+      <li> <a href="{{ route('carrier.index') }}">Carriers</a> </li>
+      <li> <a href="{{ route('agent.index') }}" >Agents</a> </li>
+      <li> <a href="{{ route('expenses.index') }}">Expenses</a> </li>
+      <li> <a href="{{ route('container.index') }}">Containers </a> </li>
+      <li> <a href="{{ route('employee.index') }}">Employees </a> </li>
+      <li> <a href="{{ route('bank-account.index') }}">Bank Accounts</a> </li>
+      <li> <a href="{{ route('currency.index') }}">Currencies</a> </li>
+      <li> <a href="{{ route('country.index') }}">Countries</a> </li>
     </ul>
   </li>
   <!--  Setup  -->
