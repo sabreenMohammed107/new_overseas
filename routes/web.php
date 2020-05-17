@@ -38,3 +38,9 @@ Route::resource('/bank-account', 'BankAccountController');
 Route::resource('/currency', 'CurrencyController');
 // ---------------------------country------------------
 Route::resource('/country', 'CountryController');
+// ---------------------------ocean-freight------------------
+Route::resource('/ocean-freight', 'OceanFreightController');
+// ---------------------------trucking-rate------------------
+Route::resource('/trucking-rate', 'TruckingRateController');
+// ---------------------------air-rate------------------
+Route::resource('/air-rate', 'AirRateController');

@@ -44,9 +44,9 @@
       <span><i class="material-icons fs-16">assignment</i>Price Lists</span>
     </a>
     <ul id="basic-elements" class="collapse" aria-labelledby="basic-elements" data-parent="#side-nav-accordion">
-      <li> <a href="_ocean_freight.html">Ocean Freight</a> </li>
-      <li> <a href="_trucking_rates.html">Trucking Rates</a> </li>
-      <li> <a href="_air_rates.html">Air Rates</a> </li>
+      <li> <a href="{{ route('ocean-freight.index') }}">Ocean Freight</a> </li>
+      <li> <a href="{{ route('trucking-rate.index') }}">Trucking Rates</a> </li>
+      <li> <a href="{{ route('air-rate.index') }}">Air Rates</a> </li>
     </ul>
   </li>
   <!--  Price Lists  -->
