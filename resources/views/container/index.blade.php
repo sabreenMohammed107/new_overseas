@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Containers Name</th>
+                               
                                 <th>Containers Type</th>
                                 <th>Containers Size</th>
                                 <th>Notes</th>
@@ -37,7 +37,7 @@
                         @foreach($rows as $index => $row)
                             <tr>
                                 <td>{{$index+1}}</td>
-                                <td>{{$row->container_name}}</td>
+                              
                                 <td>{{$row->container_type}}</td>
                                 <td>{{$row->container_size}}</td>
                                 <td>{{$row->container_note}}</td>
@@ -80,12 +80,12 @@
                     <form action="{{route('container.store')}}" method="POST" >
                             {{ csrf_field() }}
                             <div class="ms-auth-container row">
-                            <div class="col-md-12 mb-3">
+                            <!-- <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                         <label class="exampleInputPassword1" for="exampleCheck1">Containers Name</label>
                                         <input type="text" name="container_name" class="form-control" placeholder="container Name">
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">

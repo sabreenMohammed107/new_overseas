@@ -90,11 +90,11 @@
                                         <label>Container</label>
                                         <select name="container_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->container)
-                                                {{$row->container->container_type}} - {{$row->container->container_size}}
+                                            {{$row->container->container_size}}-{{$row->container->container_type}}
                                                 @endif</option>
                                             @foreach ($containers as $type)
                                             <option value='{{$type->id}}'>
-                                            {{$type->container_type}} - {{$type->container_size}}</option>
+                                            {{$type->container_size}}-{{$type->container_type}}</option>
                                             @endforeach
                                         </select>
                                     </div>

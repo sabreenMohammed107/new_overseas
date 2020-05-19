@@ -31,12 +31,12 @@
 
                             @method('PUT')
                             <div class="ms-auth-container row">
-                                <div class="col-md-12 mb-3">
+                                <!-- <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                         <label class="exampleInputPassword1" for="exampleCheck1">Containers Name</label>
                                         <input type="text" name="container_name" value="{{$row->container_name}}" class="form-control" placeholder="container Name">
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
