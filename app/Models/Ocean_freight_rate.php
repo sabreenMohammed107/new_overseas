@@ -18,12 +18,12 @@ class Ocean_freight_rate extends Model
     }
     public function pol()
     {
-        return $this->belongsTo('App\Models\Port_type','pol_id');
+        return $this->belongsTo('App\Models\Port','pol_id');
 
     }
     public function pod()
     {
-        return $this->belongsTo('App\Models\Port_type','pod_id');
+        return $this->belongsTo('App\Models\Port','pod_id');
 
     }
     public function container()

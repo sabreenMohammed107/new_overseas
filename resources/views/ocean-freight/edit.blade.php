@@ -34,13 +34,13 @@
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
                                         <label class="exampleInputPassword1" for="exampleCheck1">Ocean Freight</label>
-                                        <input type="text" name="ocean_freight"  value="{{$row->ocean_freight}}" class="form-control" placeholder="Ocean Freight">
+                                        <input type="text" name="ocean_freight" value="{{$row->ocean_freight}}" class="form-control" placeholder="Ocean Freight">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
                                         <label class="exampleInputPassword1" for="exampleCheck1">*Price</label>
-                                        <input type="number" name="price"  value="{{$row->ocean_freight}}" class="form-control" placeholder="Price">
+                                        <input type="number" name="price" value="{{$row->ocean_freight}}" class="form-control" placeholder="Price">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -62,11 +62,11 @@
                                         <label>Pol</label>
                                         <select name="pol_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->pol)
-                                    {{$row->pol->port_type}}
-                                    @endif</option>
+                                                {{$row->pol->port_name}} - {{$row->pol->country->country_name}}
+                                                @endif</option>
                                             @foreach ($pols as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -76,11 +76,11 @@
                                         <label>Pod</label>
                                         <select name="pod_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->pod)
-                                    {{$row->pod->port_type}}
-                                    @endif</option>
+                                                {{$row->pod->port_name}} - {{$row->pod->country->country_name}}
+                                                @endif</option>
                                             @foreach ($pods as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -90,11 +90,11 @@
                                         <label>Container</label>
                                         <select name="container_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->container)
-                                    {{$row->container->container_name}}
-                                    @endif</option>
+                                                {{$row->container->container_type}} - {{$row->container->container_size}}
+                                                @endif</option>
                                             @foreach ($containers as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->container_name}}</option>
+                                            {{$type->container_type}} - {{$type->container_size}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -104,8 +104,8 @@
                                         <label>Currency</label>
                                         <select name="currency_id" class="form-control" data-live-search="true">
                                             <option value="">@if($row->currency)
-                                    {{$row->currency->currency_name}}
-                                    @endif</option>
+                                                {{$row->currency->currency_name}}
+                                                @endif</option>
                                             @foreach ($currencies as $type)
                                             <option value='{{$type->id}}'>
                                                 {{ $type->currency_name}}</option>
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                    <?php $date = date_create($row->validity_date) ?>
+                                        <?php $date = date_create($row->validity_date) ?>
                                         <label class="exampleInputPassword1" for="exampleCheck1">Validitiy Date</label>
                                         <input type="date" name="validity_date" value="{{ date_format($date,'Y-m-d') }}" class="form-control" placeholder="Validitiy Date">
                                     </div>

@@ -10,7 +10,7 @@
 <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
   <!-- Home -->
   <li class="menu-item ">
-    <a class="active" href="index.html">
+    <a class="active" href="{{url('/')}}">
       <span><i class="material-icons fs-16">home</i>Home </span>
     </a>
 

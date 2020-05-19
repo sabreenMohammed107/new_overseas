@@ -65,11 +65,11 @@
                                         <label>Aol</label>
                                         <select name="aol_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->aol)
-                                                {{$row->aol->port_type}}
+                                                {{$row->aol->port_name}} - {{$row->aol->port_name->country->country_name}}
                                                 @endif</option>
                                             @foreach ($aols as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name} }- {{$type->port_name->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -79,11 +79,11 @@
                                         <label>Aod</label>
                                         <select name="aod_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->aod)
-                                                {{$row->aod->port_type}}
+                                                {{$row->aod->port_name}} - {{$row->aod->port_name->country->country_name}}
                                                 @endif</option>
                                             @foreach ($aods as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->port_name->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -26,7 +26,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Trucking Company</th>
+                                <th>Supplier</th>
                                 <th>Pol</th>
                                 <th>Pod</th>
                                 <th>Faradany Price</th>
@@ -46,12 +46,14 @@
                             @foreach($rows as $index => $row)
                             <tr>
                                 <td>{{$index+1}}</td>
-                                <td>{{$row->trucking_company}}</td>
+                                <td>@if($row->supplier)
+                                    {{$row->supplier->supplier_name}} 
+                                    @endif</td>
                                 <td>@if($row->pol)
-                                    {{$row->pol->port_type}}
+                                    {{$row->pol->port_name}} - {{$row->pol->country->country_name}}
                                     @endif</td>
                                 <td>@if($row->pod)
-                                    {{$row->pod->port_type}}
+                                    {{$row->pod->port_name}} - {{$row->pod->country->country_name}}
                                     @endif</td>
                                 <td>{{$row->faradany_price}}</td>
                                 <td>@if($row->faradany)
@@ -111,10 +113,16 @@
                         <form action="{{route('trucking-rate.store')}}" method="POST">
                             {{ csrf_field() }}
                             <div class="ms-auth-container row">
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label class="exampleInputPassword1" for="exampleCheck1">Trucking Company</label>
-                                        <input type="text" name="trucking_company" class="form-control" placeholder="Trucking Company">
+                            <div class="col-md-6 mb-3">
+                                    <div class="ui-widget form-group">
+                                        <label>Supplier</label>
+                                        <select name="supplier_id" class=" form-control" data-live-search="true">
+                                        <option value="">Select ...</option>
+                                            @foreach ($suppliers as $type)
+                                            <option value='{{$type->id}}'>
+                                                {{ $type->supplier_name}}  </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3"></div>
@@ -125,7 +133,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($pols as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - @if($type->country){{$type->country->country_name}}@endif </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -137,7 +145,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($pods as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - @if($type->country){{$type->country->country_name}}@endif </option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -7,22 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class Trucking_rate extends Model
 {
     protected $fillable = [
-        'trucking_company','pol_id', 'pod_id', 'faradany_price', 'faradany_currency_id',
+        'supplier_id','pol_id', 'pod_id', 'faradany_price', 'faradany_currency_id',
         'trailer_price','trailer_currency_id',
         'grar_price','grar_currency_id','hrf_price','hrf_currency_id'
         ,'transit_time','validity_date','notes'
       
      
     ];
+    public function supplier()
+    {
+        return $this->belongsTo('App\Models\Supplier','supplier_id');
+
+    }
    
     public function pol()
     {
-        return $this->belongsTo('App\Models\Port_type','pol_id');
+        return $this->belongsTo('App\Models\Port','pol_id');
 
     }
     public function pod()
     {
-        return $this->belongsTo('App\Models\Port_type','pod_id');
+        return $this->belongsTo('App\Models\Port','pod_id');
 
     }
     public function faradany()

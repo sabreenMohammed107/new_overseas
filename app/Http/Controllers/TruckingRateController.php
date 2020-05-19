@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Trucking_rate;
 
-use App\Models\Port_type;
-
+use App\Models\Port;
+use App\Models\Supplier;
 use App\Models\Currency;
 use File;
 use DB;
@@ -41,15 +41,15 @@ class TruckingRateController extends Controller
     {
         $rows = Trucking_rate::orderBy("created_at", "Desc")->get();
        
-        $pols = Port_type::all();
-        $pods = Port_type::all();
+        $pols = Port::all();
+        $pods = Port::all();
         $faradanies = Currency::all();
         $trailers = Currency::all();
         $grars = Currency::all();
         $hrfs = Currency::all();
-       
+       $suppliers=Supplier::where('supplier_type_id','=',1)->get();
 
-        return view($this->viewName . 'index', compact('rows', 'pols', 'pods', 'faradanies', 'trailers','grars','hrfs'));
+        return view($this->viewName . 'index', compact('rows','suppliers', 'pols', 'pods', 'faradanies', 'trailers','grars','hrfs'));
     }
 
     /**
@@ -71,7 +71,7 @@ class TruckingRateController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'trucking_company' => $request->input('trucking_company'),
+           
             'faradany_price' => $request->input('faradany_price'),
             'trailer_price' => $request->input('trailer_price'),
             'grar_price' => $request->input('grar_price'),
@@ -83,6 +83,10 @@ class TruckingRateController extends Controller
 
         ];
       
+        if ($request->input('supplier_id')) {
+
+            $data['supplier_id'] = $request->input('supplier_id');
+        }
         if ($request->input('pol_id')) {
 
             $data['pol_id'] = $request->input('pol_id');
@@ -138,15 +142,15 @@ class TruckingRateController extends Controller
     {
         $row = Trucking_rate::where('id', '=', $id)->first();
        
-        $pols = Port_type::all();
-        $pods = Port_type::all();
+        $pols = Port::all();
+        $pods = Port::all();
         $faradanies = Currency::all();
         $trailers = Currency::all();
         $grars = Currency::all();
         $hrfs = Currency::all();
-       
+        $suppliers=Supplier::where('supplier_type_id','=',1)->get();
 
-        return view($this->viewName . 'edit', compact('row', 'pols', 'pods', 'faradanies', 'trailers','grars','hrfs'));
+        return view($this->viewName . 'edit', compact('row','suppliers', 'pols', 'pods', 'faradanies', 'trailers','grars','hrfs'));
     }
 
     /**
@@ -159,7 +163,7 @@ class TruckingRateController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'trucking_company' => $request->input('trucking_company'),
+          
             'faradany_price' => $request->input('faradany_price'),
             'trailer_price' => $request->input('trailer_price'),
             'grar_price' => $request->input('grar_price'),
@@ -170,7 +174,10 @@ class TruckingRateController extends Controller
            
 
         ];
-      
+        if ($request->input('supplier_id')) {
+
+            $data['supplier_id'] = $request->input('supplier_id');
+        }
         if ($request->input('pol_id')) {
 
             $data['pol_id'] = $request->input('pol_id');

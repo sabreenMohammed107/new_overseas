@@ -50,13 +50,13 @@
                                     @endif
                                 </td>
                                 <td> @if($row->pol)
-                                    {{$row->pol->port_type}}
+                                    {{$row->pol->port_name}} - {{$row->pol->country->country_name}}
                                     @endif</td>
                                 <td> @if($row->pod)
-                                    {{$row->pod->port_type}}
+                                    {{$row->pod->port_name}} - {{$row->pod->country->country_name}}
                                     @endif</td>
                                 <td> @if($row->container)
-                                    {{$row->container->container_name}}
+                                    {{$row->container->container_type}} - {{$row->container->container_size}}
                                     @endif</td>
                                 <td> {{$row->price}}</td>
                                 <td> @if($row->currency)
@@ -136,7 +136,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($pols as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -148,7 +148,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($pods as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -160,7 +160,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($containers as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->container_name}}</option>
+                                            {{$type->container_type}} - {{$type->container_size}}</option>
                                             @endforeach
                                         </select>
                                     </div>

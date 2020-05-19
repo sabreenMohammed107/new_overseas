@@ -19,12 +19,12 @@ class Air_rate extends Model
     }
     public function aol()
     {
-        return $this->belongsTo('App\Models\Port_type','aol_id');
+        return $this->belongsTo('App\Models\Port','aol_id');
 
     }
     public function aod()
     {
-        return $this->belongsTo('App\Models\Port_type','aod_id');
+        return $this->belongsTo('App\Models\Port','aod_id');
 
     }
  

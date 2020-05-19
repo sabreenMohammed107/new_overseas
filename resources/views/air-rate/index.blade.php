@@ -44,10 +44,10 @@
                                     {{$row->carrier->carrier_name}}
                                     @endif</td>
                                 <td>@if($row->aol)
-                                    {{$row->aol->port_type}}
+                                    {{$row->aol->port_name}} - {{$row->aol->country->country_name}}
                                     @endif</td>
                                 <td> @if($row->aod)
-                                    {{$row->aod->port_type}}
+                                    {{$row->aod->port_name}} - {{$row->aod->country->country_name}}
                                     @endif</td>
                                 <td>{{$row->slide_range}}</td>
                                 <td>{{$row->price}}</td>
@@ -129,7 +129,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($aols as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
 									</div>
@@ -141,7 +141,7 @@
                                         <option value="">Select ...</option>
                                             @foreach ($aods as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_type}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
 									</div>

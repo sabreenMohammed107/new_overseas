@@ -15,7 +15,7 @@ class CreateTruckingRatesTable extends Migration
     {
         Schema::create('trucking_rates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('trucking_company', 250)->nullable();
+            $table->integer('supplier_id')->unsigned()->nullable();
             $table->integer('pol_id')->unsigned()->nullable();
             $table->integer('pod_id')->unsigned()->nullable();
             $table->double('faradany_price')->nullable();

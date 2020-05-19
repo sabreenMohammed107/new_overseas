@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ocean_freight_rate;
 use App\Models\Carrier;
-use App\Models\Port_type;
+use App\Models\Port;
 use App\Models\Container;
 use App\Models\Currency;
 use File;
@@ -42,8 +42,8 @@ class OceanFreightController extends Controller
     {
         $rows = Ocean_freight_rate::orderBy("created_at", "Desc")->get();
         $carriers = Carrier::all();
-        $pols = Port_type::all();
-        $pods = Port_type::all();
+        $pols = Port::all();
+        $pods = Port::all();
         $currencies = Currency::all();
         $containers = Container::all();
 
@@ -127,8 +127,8 @@ class OceanFreightController extends Controller
     {
         $row = Ocean_freight_rate::where('id', '=', $id)->first();
         $carriers = Carrier::all();
-        $pols = Port_type::all();
-        $pods = Port_type::all();
+        $pols = Port::all();
+        $pods = Port::all();
         $currencies = Currency::all();
         $containers = Container::all();
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Air_rate;
 use App\Models\Carrier;
-use App\Models\Port_type;
+use App\Models\Port;
 
 use App\Models\Currency;
 use File;
@@ -42,8 +42,8 @@ class AirRateController extends Controller
     {
         $rows = Air_rate::orderBy("created_at", "Desc")->get();
         $carriers = Carrier::all();
-        $aols = Port_type::all();
-        $aods = Port_type::all();
+        $aols = Port::all();
+        $aods = Port::all();
         $currencies = Currency::all();
 
 
@@ -124,8 +124,8 @@ class AirRateController extends Controller
         $row = Air_rate::where('id', '=', $id)->first();
        
         $carriers = Carrier::all();
-        $aols = Port_type::all();
-        $aods = Port_type::all();
+        $aols = Port::all();
+        $aods = Port::all();
         $currencies = Currency::all();
 
 
