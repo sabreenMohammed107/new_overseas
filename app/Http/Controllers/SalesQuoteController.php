@@ -112,8 +112,8 @@ class SalesQuoteController extends Controller
             'quote_date' => Carbon::parse($request->input('quote_date')),
             'quote_code' => $max,
             'ocean_air_type' => $type,
-            'air_price' => $request->input('air_price'),
-            'ocean_price' => $request->input('ocean_price'),
+           
+          
             'faradany_price' => $request->input('faradany_price'),
             'trailer_price' => $request->input('trailer_price'),
             'grar_price' => $request->input('grar_price'),
@@ -134,40 +134,44 @@ class SalesQuoteController extends Controller
 
             $data['supplier_type_id'] = $request->input('supplier_type_id');
         }
-if($type = 0){
-        if ($request->input('air_rate_id')) {
+        if ($type == 0) {
+            if ($request->input('air_rate_id')) {
 
-            $data['air_rate_id'] = $request->input('air_rate_id');
-            $dataAir = Air_rate::where('id', $request->input('air_rate_id'))->first();
+                $data['air_rate_id'] = $request->input('air_rate_id');
+                $dataAir = Air_rate::where('id', $request->input('air_rate_id'))->first();
 
-            $data['air_aol_id'] = $dataAir->aol_id;
-            $data['air_aod_id'] = $dataAir->aod_id;
-            $data['air_slide_range'] = $dataAir->slide_range;
-            $data['air_notes'] = $dataAir->notes;
-            $data['air_validity_date'] = $dataAir->validity_date;
+                $data['air_aol_id'] = $dataAir->aol_id;
+                $data['air_aod_id'] = $dataAir->aod_id;
+                $data['air_slide_range'] = $dataAir->slide_range;
+                $data['air_notes'] = $dataAir->notes;
+                $data['air_validity_date'] = $dataAir->validity_date;
+            }
+            if ($request->input('air_currency_id')) {
+
+                $data['air_currency_id'] = $request->input('air_currency_id');
+            }
+            $data['air_price']  = $request->input('air_price');
         }
-    }
 
-        if ($request->input('air_currency_id')) {
+      
+        if ($type = 1) {
+            if ($request->input('ocean_rate_id')) {
+                $data['ocean_rate_id'] = $request->input('ocean_rate_id');
+                $dataOcean = Ocean_freight_rate::where('id',  $request->input('ocean_rate_id'))->first();
+                $data['ocean_pol_id'] = $dataOcean->pol_id;
+                $data['ocean_pod_id'] = $dataOcean->pod_id;
+                $data['ocean_container_id'] = $dataOcean->container_id;
+                $data['ocean_notes'] = $dataOcean->notes;
+                $data['ocean_validity_date'] = $dataOcean->validity_date;
+                $data['ocean_transit_time'] = $dataOcean->transit_time;
+            }
+            if ($request->input('ocean_currency_id')) {
 
-            $data['air_currency_id'] = $request->input('air_currency_id');
+                $data['ocean_currency_id'] = $request->input('ocean_currency_id');
+            }
+            $data['ocean_price']  = $request->input('ocean_price');
         }
-        if($type = 1){
-        if ($request->input('ocean_rate_id')) {
-            $data['ocean_rate_id'] = $request->input('ocean_rate_id');
-            $dataOcean = Ocean_freight_rate::where('id',  $request->input('ocean_rate_id'))->first();
-            $data['ocean_pol_id'] = $dataOcean->pol_id;
-            $data['ocean_pod_id'] = $dataOcean->pod_id;
-            $data['ocean_container_id'] = $dataOcean->container_id;
-            $data['ocean_notes'] = $dataOcean->notes;
-            $data['ocean_validity_date'] = $dataOcean->validity_date;
-            $data['ocean_transit_time'] = $dataOcean->transit_time;
-        }
-    }
-        if ($request->input('ocean_currency_id')) {
-
-            $data['ocean_currency_id'] = $request->input('ocean_currency_id');
-        }
+      
 
         if ($request->input('trucking_rate_id')) {
 
@@ -232,7 +236,34 @@ if($type = 0){
      */
     public function edit($id)
     {
-        //
+        $row = Sale_quote::where('id', '=', $id)->first();
+        $clients = Client::all();
+        $airs = Air_rate::all();
+        $oceans = Ocean_freight_rate::all();
+        $currencies = Currency::all();
+        $oceancurrencies = Currency::all();
+        $faradanies = Currency::all();
+        $trailers = Currency::all();
+        $grars = Currency::all();
+        $hrfs = Currency::all();
+        $truckings = Trucking_rate::all();
+        $clearances = Currency::all();
+        $doors = Currency::all();
+        return view($this->viewName . 'edit', compact(
+            'clients',
+            'row',
+            'airs',
+            'oceancurrencies',
+            'oceans',
+            'currencies',
+            'faradanies',
+            'trailers',
+            'grars',
+            'hrfs',
+            'truckings',
+            'clearances',
+            'doors'
+        ));
     }
 
     /**
@@ -244,7 +275,151 @@ if($type = 0){
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $row = Sale_quote::where('id', '=', $id)->first();
+        //get type
+        $type = 0;
+        if ($request->input('tab') === "igotnone") {
+            $type = 0;
+        } else {
+            $type = 1;
+        }
+
+
+        $data = [
+            'quote_date' => Carbon::parse($request->input('quote_date')),
+
+            'ocean_air_type' => $type,
+         
+            'faradany_price' => $request->input('faradany_price'),
+            'trailer_price' => $request->input('trailer_price'),
+            'grar_price' => $request->input('grar_price'),
+            'hrf_price' => $request->input('hrf_price'),
+            'clearance_price' => $request->input('clearance_price'),
+            'clearance_notes' => $request->input('clearance_notes'),
+            'door_door_price' => $request->input('door_door_price'),
+            'door_door_notes' => $request->input('door_door_notes'),
+
+
+
+        ];
+        if ($request->input('client_id')) {
+
+            $data['client_id'] = $request->input('client_id');
+        }
+        if ($request->input('supplier_type_id')) {
+
+            $data['supplier_type_id'] = $request->input('supplier_type_id');
+        }
+        if ($type == 0) {
+            $dataAir =null;
+            if ($request->input('air_rate_id')) {
+
+                $data['air_rate_id'] = $request->input('air_rate_id');
+                $dataAir = Air_rate::where('id', $request->input('air_rate_id'))->first();
+            }else{
+                $dataAir = Air_rate::where('id', $row->air_rate_id)->first(); 
+            }
+                $data['air_aol_id'] = $dataAir->aol_id;
+                $data['air_aod_id'] = $dataAir->aod_id;
+                $data['air_slide_range'] = $dataAir->slide_range;
+                $data['air_notes'] = $dataAir->notes;
+                $data['air_validity_date'] = $dataAir->validity_date;
+                $data['air_price'] = $request->input('air_price');
+
+                if ($request->input('air_currency_id')) {
+
+                    $data['air_currency_id'] = $request->input('air_currency_id');
+                }
+                //delete old
+                $data['ocean_price'] = null;
+                $data['ocean_rate_id'] = null;
+                $data['ocean_pol_id'] = null;
+                $data['ocean_pod_id'] = null;
+                $data['ocean_container_id'] = null;
+                $data['ocean_notes'] = null;
+                $data['ocean_validity_date'] = null;
+                $data['ocean_transit_time'] = null;
+                $data['ocean_currency_id'] = null;
+           
+        }
+
+        if ($type == 1) {
+            $dataOcean =null;
+       
+            if ($request->input('ocean_rate_id')) {
+                $data['ocean_rate_id'] = $request->input('ocean_rate_id');
+                $dataOcean = Ocean_freight_rate::where('id',  $request->input('ocean_rate_id'))->first();
+            }else{
+                $dataOcean = Ocean_freight_rate::where('id', $row->ocean_rate_id)->first();
+            }
+                $data['ocean_pol_id'] = $dataOcean->pol_id;
+                $data['ocean_pod_id'] = $dataOcean->pod_id;
+                $data['ocean_container_id'] = $dataOcean->container_id;
+                $data['ocean_notes'] = $dataOcean->notes;
+                $data['ocean_validity_date'] = $dataOcean->validity_date;
+                $data['ocean_transit_time'] = $dataOcean->transit_time;
+
+                $data['ocean_price'] = $request->input('ocean_price');
+
+                if ($request->input('ocean_currency_id')) {
+
+                    $data['ocean_currency_id'] = $request->input('ocean_currency_id');
+                }
+                //delete old   
+                $data['air_price'] =null;
+                $data['air_rate_id'] =null;
+                 $data['air_aol_id'] =null;
+                $data['air_aod_id'] = null;
+                $data['air_slide_range'] =null;
+                $data['air_notes'] = null;
+                $data['air_validity_date'] =null;
+                $data['air_currency_id'] = null;
+
+            }
+        
+        
+
+        if ($request->input('trucking_rate_id')) {
+
+            $data['trucking_rate_id'] = $request->input('trucking_rate_id');
+
+            $dataTrucking = Trucking_rate::where('id',  $request->input('trucking_rate_id'))->first();
+            $data['trucking_pol_id'] = $dataTrucking->pol_id;
+            $data['trucking_pod_id'] = $dataTrucking->pod_id;
+            $data['trucking_notes'] = $dataTrucking->notes;
+            $data['trucking_validity_date'] = $dataTrucking->validity_date;
+        }
+        if ($request->input('faradany_currency_id')) {
+
+            $data['faradany_currency_id'] = $request->input('faradany_currency_id');
+        }
+        if ($request->input('trailer_currency_id')) {
+
+            $data['trailer_currency_id'] = $request->input('trailer_currency_id');
+        }
+        if ($request->input('grar_currency_id')) {
+
+            $data['grar_currency_id'] = $request->input('grar_currency_id');
+        }
+        if ($request->input('hrf_currency_id')) {
+
+            $data['hrf_currency_id'] = $request->input('hrf_currency_id');
+        }
+
+        if ($request->input('clearance_currency_id')) {
+
+            $data['clearance_currency_id'] = $request->input('clearance_currency_id');
+        }
+
+        if ($request->input('door_door_currency_id')) {
+
+            $data['door_door_currency_id'] = $request->input('door_door_currency_id');
+        }
+
+        $this->object::findOrFail($id)->update($data);
+
+        return redirect()->route($this->routeName . 'index')->with('flash_success', $this->message);
     }
 
     /**
@@ -256,18 +431,16 @@ if($type = 0){
     public function destroy($id)
     {
         $row = Sale_quote::where('id', '=', $id)->first();
-       
+
 
         try {
             $row->delete();
-          
         } catch (QueryException $q) {
 
             return redirect()->back()->with('flash_danger', 'You cannot delete related with another...');
         }
 
         return redirect()->route($this->routeName . 'index')->with('flash_success', 'Data Has Been Deleted Successfully !');
-    
     }
 
 
@@ -300,9 +473,9 @@ if($type = 0){
 
         array_push($dataAjax, $data->pol->port_name);
         array_push($dataAjax, $data->pod->port_name);
-         $container=$data->container->container_size.'-'.$data->container->container_type;
-     
-        array_push($dataAjax,$container);
+        $container = $data->container->container_size . '-' . $data->container->container_type;
+
+        array_push($dataAjax, $container);
         $date = date_create($data->validity_date);
         $dd = date_format($date, 'Y-m-d');
         array_push($dataAjax, $dd);

@@ -22,7 +22,7 @@
 	<div class="col-md-12">
 		<div class="ms-panel">
 			<div class="ms-panel-header d-flex justify-content-between">
-				<h6>Ocean Freight</h6>
+			<h6>Sale Quote</h6>
 				<!-- <a href="add_cource.html" class="btn btn-dark" > add Course </a> -->
 			</div>
 			<div class="ms-panel-body">
@@ -348,7 +348,7 @@
 											<label>Clearance Currency</label>
 											<select name="clearance_currency_id" class="form-control" data-live-search="true">
                                         <option value="">Select ...</option>
-                                            @foreach ($hrfs as $type)
+                                            @foreach ($clearances as $type)
                                             <option value='{{$type->id}}'>
                                                 {{ $type->currency_name}}</option>
                                             @endforeach
@@ -378,7 +378,7 @@
 											<label>Door Currency</label>
 											<select name="door_door_currency_id" class="form-control" data-live-search="true">
                                         <option value="">Select ...</option>
-                                            @foreach ($hrfs as $type)
+                                            @foreach ($doors as $type)
                                             <option value='{{$type->id}}'>
                                                 {{ $type->currency_name}}</option>
                                             @endforeach
@@ -395,7 +395,7 @@
 
 							</div>
 							<div class="input-group d-flex justify-content-end text-center">
-								<a href="_sales_quote.html" class="btn btn-dark mx-2"> Cancel</a>
+							<a href="{{ route('sale-quote.index') }}" class="btn btn-dark mx-2"> Cancel</a>
 								<!-- <input type="button" value="Cancel" class="btn btn-dark mx-2" data-dismiss="modal" aria-label="Close"> -->
 								<input type="submit" value="Add" class="btn btn-success ">
 							</div>
