@@ -31,18 +31,12 @@
 
                             @method('PUT')
                             <div class="ms-auth-container row">
-                                <div class="col-md-6 mb-3">
+                                <!-- <div class="col-md-6 mb-3">
                                     <div class="form-group">
                                         <label class="exampleInputPassword1" for="exampleCheck1">Ocean Freight</label>
                                         <input type="text" name="ocean_freight" value="{{$row->ocean_freight}}" class="form-control" placeholder="Ocean Freight">
                                     </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label class="exampleInputPassword1" for="exampleCheck1">*Price</label>
-                                        <input type="number" name="price" value="{{$row->ocean_freight}}" class="form-control" placeholder="Price">
-                                    </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6 mb-3">
                                     <div class="ui-widget form-group">
                                         <label>Carrier Name</label>
@@ -57,6 +51,13 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label class="exampleInputPassword1" for="exampleCheck1">*Price</label>
+                                        <input type="number" name="price" value="{{$row->ocean_freight}}" class="form-control" placeholder="Price">
+                                    </div>
+                                </div>
+                               
                                 <div class="col-md-6 mb-3">
                                     <div class="ui-widget form-group">
                                         <label>Pol</label>
