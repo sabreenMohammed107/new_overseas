@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ocean_freight_rate extends Model
 {
     protected $fillable = [
-        'ocean_freight', 'price', 'carrier_id','pol_id', 'pod_id','container_id','currency_id','transit_time','validity_date','notes'
+        'code', 'ocean_freight', 'price', 'carrier_id','pol_id', 'pod_id','container_id','currency_id','transit_time','validity_date','notes'
       
      
     ];

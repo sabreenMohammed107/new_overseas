@@ -26,6 +26,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Code</th>
                                 <th>Supplier</th>
                                 <th>Pol</th>
                                 <th>Pod</th>
@@ -46,6 +47,7 @@
                             @foreach($rows as $index => $row)
                             <tr>
                                 <td>{{$index+1}}</td>
+                                <td>{{$row->code}}</td>
                                 <td>@if($row->supplier)
                                     {{$row->supplier->supplier_name}} 
                                     @endif</td>

@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <!-- <th>Ocean Freight</th> -->
+                                <th>Code</th>
                                 <th>Carrier Name</th>
                                 <th>Pol</th>
                                 <th>Pod</th>
@@ -42,6 +42,7 @@
                             @foreach($rows as $index => $row)
                             <tr>
                                 <td>{{$index+1}}</td>
+                                <td>{{$row->code}}</td>
                                 <!-- <td>
                                     {{$row->ocean_freight}}</td>-->
                                 <td> 

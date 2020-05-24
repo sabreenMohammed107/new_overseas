@@ -68,7 +68,17 @@ class OceanFreightController extends Controller
      */
     public function store(Request $request)
     {
+         //get max code
+         $max = 0;
+
+         $maxValue = Ocean_freight_rate::orderBy('id', 'desc')->value('code');
+         if ($maxValue != null) {
+             $max = $maxValue + 1;
+         } else {
+             $max = 100;
+         }
         $data = [
+            'code'=>$max,
             'ocean_freight' => $request->input('ocean_freight'),
             'price' => $request->input('price'),
             'transit_time' => $request->input('transit_time'),

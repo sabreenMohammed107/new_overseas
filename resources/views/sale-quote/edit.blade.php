@@ -113,14 +113,15 @@
                                             <select name="air_rate_id" class="airCarrier form-control" data-live-search="true">
                                                 <option value="">
                                                     @if($row->air)
-                                                    {{$row->air->carrier->carrier_name}}
+                                                    {{$row->air->code}}
                                                     @endif
                                                 </option>
                                                 @foreach ($airs as $type)
                                                 <option value='{{$type->id}}'>
-                                                    @if($type->carrier)
-                                                    {{ $type->carrier->carrier_name}}
-                                                    @endif</option>
+                                                    <!-- @if($type->carrier) -->
+                                                    {{ $type->code}}
+                                                    <!-- @endif -->
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -189,14 +190,17 @@
                                         <div class="ui-widget form-group">
                                             <label>Ocean Freigt Carrier</label>
                                             <select name="ocean_rate_id" class="oceanCarrier form-control" data-live-search="true">
-                                                <option value=""> @if($row->ocean)
-                                                    {{$row->ocean->carrier->carrier_name}}
-                                                    @endif</option>
+                                                <option value=""> 
+                                                    @if($row->ocean)
+                                                    {{$row->ocean->code}}
+                                                    @endif
+                                                </option>
                                                 @foreach ($oceans as $type)
                                                 <option value='{{$type->id}}'>
-                                                    @if($type->carrier)
-                                                    {{ $type->carrier->carrier_name}}
-                                                    @endif</option>
+                                                    <!-- @if($type->carrier) -->
+                                                    {{ $type->code}}
+                                                    <!-- @endif -->
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -271,14 +275,16 @@
                                         <div class="ui-widget form-group">
                                             <label>Trucking Rate</label>
                                             <select name="trucking_rate_id" class="truckingCarrier form-control" data-live-search="true">
-                                                <option value=""> @if($row->trucking)
-                                                    {{$row->trucking->supplier->supplier_name}}
+                                                <option value="">
+                                                     @if($row->trucking)
+                                                    {{$row->trucking->code}}
                                                     @endif</option>
                                                 @foreach ($truckings as $type)
                                                 <option value='{{$type->id}}'>
-                                                    @if($type->supplier)
-                                                    {{ $type->supplier->supplier_name}}
-                                                    @endif</option>
+                                                    <!-- @if($type->supplier) -->
+                                                    {{ $type->code}}
+                                                    <!-- @endif -->
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>

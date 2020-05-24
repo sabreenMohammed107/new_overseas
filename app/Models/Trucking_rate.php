@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Trucking_rate extends Model
 {
     protected $fillable = [
-        'supplier_id','pol_id', 'pod_id', 'faradany_price', 'faradany_currency_id',
+        'code','supplier_id','pol_id', 'pod_id', 'faradany_price', 'faradany_currency_id',
         'trailer_price','trailer_currency_id',
         'grar_price','grar_currency_id','hrf_price','hrf_currency_id'
         ,'transit_time','validity_date','notes'

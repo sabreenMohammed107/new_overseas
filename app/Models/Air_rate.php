@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Air_rate extends Model
 {
     protected $fillable = [
-        'air_carrier_id', 'currency_id','aol_id', 'aod_id','slide_range','price'
+        'code','air_carrier_id', 'currency_id','aol_id', 'aod_id','slide_range','price'
         ,'validity_date','notes'
       
      

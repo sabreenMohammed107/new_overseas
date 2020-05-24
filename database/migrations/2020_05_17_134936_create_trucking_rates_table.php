@@ -29,6 +29,7 @@ class CreateTruckingRatesTable extends Migration
             $table->integer('transit_time')->nullable();
             $table->dateTime('validity_date', 6)->nullable();
             $table->text('notes')->nullable();
+            $table->string('code', 250)->nullable();
             $table->timestamps();
         });
     }

@@ -47,6 +47,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
+							<div class="form-group">
+								<label class="exampleInputPassword1" for="exampleCheck1"> Code</label>
+								<input type="text" class="form-control" value="{{$row->code}}" placeholder="Code" disabled>
+							</div>
+						</div>
+                                <div class="col-md-6 mb-3">
                                     <div class="ui-widget form-group">
                                         <label>Currency</label>
                                         <select name="currency_id" class="form-control" data-live-search="true">
@@ -55,7 +61,7 @@
                                                 @endif</option>
                                             @foreach ($currencies as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->currency_name}}</option>
+                                                {{$type->currency_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -65,11 +71,11 @@
                                         <label>Aol</label>
                                         <select name="aol_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->aol)
-                                                {{$row->aol->port_name}} - {{$row->aol->port_name->country->country_name}}
+                                                {{$row->aol->port_name}} - {{$row->aol->country->country_name}}
                                                 @endif</option>
                                             @foreach ($aols as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_name} }- {{$type->port_name->country->country_name}}</option>
+                                                {{ $type->port_name}}- {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -79,11 +85,11 @@
                                         <label>Aod</label>
                                         <select name="aod_id" class=" form-control" data-live-search="true">
                                             <option value="">@if($row->aod)
-                                                {{$row->aod->port_name}} - {{$row->aod->port_name->country->country_name}}
+                                                {{$row->aod->port_name}} - {{$row->aod->country->country_name}}
                                                 @endif</option>
                                             @foreach ($aods as $type)
                                             <option value='{{$type->id}}'>
-                                                {{ $type->port_name}} - {{$type->port_name->country->country_name}}</option>
+                                                {{ $type->port_name}} - {{$type->country->country_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

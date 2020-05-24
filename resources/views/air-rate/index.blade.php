@@ -25,6 +25,7 @@
                     <table id="courseEval" class="dattable table table-striped thead-dark  w-100">
                         <thead>
                             <th>#</th>
+                            <th>code</th>
                             <th>Air Carrier</th>
                             <th>Aol</th>
                             <th>Aod</th>
@@ -40,6 +41,7 @@
                             @foreach($rows as $index => $row)
                             <tr>
                                 <td>{{$index+1}}</td>
+                                <td>{{$row->code}}</td>
                                 <td> @if($row->carrier)
                                     {{$row->carrier->carrier_name}}
                                     @endif</td>

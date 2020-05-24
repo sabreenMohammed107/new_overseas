@@ -45,7 +45,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3"></div>
+                                <div class="col-md-6 mb-3">
+							<div class="form-group">
+								<label class="exampleInputPassword1" for="exampleCheck1"> Code</label>
+								<input type="text" class="form-control" value="{{$row->code}}" placeholder="Code" disabled>
+							</div>
+						</div>
                                 <div class="col-md-6 mb-3">
                                     <div class="ui-widget form-group">
                                         <label>Pol</label>
