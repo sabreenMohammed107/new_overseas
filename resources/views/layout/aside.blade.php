@@ -57,7 +57,7 @@
     <span><i class="material-icons fs-16">assignment</i>Sales</span>
   </a>
   <ul id="contactsdropdown" class="collapse" aria-labelledby="basic-elements" data-parent="#side-nav-accordion">
-    <li> <a href="{{ route('sale-quote.index') }}">Sales Quote</a> </li>
+    <li> <a href="{{ route('sale-quoteTest.index') }}">Sales Quote</a> </li>
  
   </ul>
   

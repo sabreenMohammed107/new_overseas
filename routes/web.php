@@ -45,7 +45,16 @@ Route::resource('/trucking-rate', 'TruckingRateController');
 // ---------------------------air-rate------------------
 Route::resource('/air-rate', 'AirRateController');
 // ---------------------------sale_quote------------------
-Route::resource('/sale-quote', 'SalesQuoteController');
-Route::get('fetchAir', 'SalesQuoteController@fetchAir')->name('fetchAir');
-Route::get('fetchOcean', 'SalesQuoteController@fetchOcean')->name('fetchOcean');
-Route::get('fetchTrucking', 'SalesQuoteController@fetchTrucking')->name('fetchTrucking');
+// Route::resource('/sale-quote', 'SalesQuoteController');
+// Route::get('fetchAir', 'SalesQuoteController@fetchAir')->name('fetchAir');
+// Route::get('fetchOcean', 'SalesQuoteController@fetchOcean')->name('fetchOcean');
+// Route::get('fetchTrucking', 'SalesQuoteController@fetchTrucking')->name('fetchTrucking');
+
+
+
+//----------------------------------------------------
+Route::resource('/sale-quoteTest', 'SalesQuoteTestController');
+Route::get('fetchAir', 'SalesQuoteTestController@fetchAir')->name('fetchAir');
+Route::get('fetchOcean', 'SalesQuoteTestController@fetchOcean')->name('fetchOcean');
+Route::get('fetchTrucking', 'SalesQuoteTestController@fetchTrucking')->name('fetchTrucking');
+Route::post('gotosave', 'SalesQuoteTestController@gotosave')->name('gotosave');
